@@ -16,4 +16,4 @@ struct = {'Humidity': 0, 'Temp': 0}
 # Writes the log entry
 logger.log_struct(struct)
 
-print('Logged: {}'.format(text))
+print('Logged: {}'.format(struct))
