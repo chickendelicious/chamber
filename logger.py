@@ -16,4 +16,8 @@ struct = {'Humidity': 0, 'Temp': 0}
 # Writes the log entry
 logger.log_struct(struct)
 
-print('Logged: {}'.format(struct))
+#print('Logged: {}'.format(struct))
+
+FILTER = 'logName:{}'.format(log_name)
+for entry in client.list_entries(filter_=FILTER):  # API call(s)
+    print(entry)
