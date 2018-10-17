@@ -35,7 +35,7 @@ def measure():
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     print('Humidity:{}, Temp:{}'.format(humidity, temperature))
 
-print "starting..."
+print ("starting...")
 rt = RepeatedTimer(1, measure) # it auto-starts, no need of rt.start()
 try:
     sleep(20) # your long-running job goes here...
