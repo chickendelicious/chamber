@@ -1,5 +1,6 @@
 # Imports the Google Cloud client library
 from google.cloud import logging
+import json
 
 
 # Instantiates a client
@@ -20,4 +21,4 @@ logger.log_struct(struct)
 
 FILTER = 'logName:{}'.format(log_name)
 for entry in logging_client.list_entries(filter_=FILTER):  # API call(s)
-    print(entry)
+    print(json.dumps(entry))
