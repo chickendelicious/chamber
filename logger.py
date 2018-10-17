@@ -3,25 +3,25 @@ from google.cloud import logging
 from google.cloud.logging import DESCENDING
 
 
-# Instantiates a client
-logging_client = logging.Client()
+class Logger:
+	def __init__(self, name):
+		# Instantiates a client
+		self.logging_client = logging.Client()
+		# The name of the log to write to
+		self.log_name = name
+		# Selects the log to write to
+		self.logger = logging_client.logger(self.log_name)
 
-# The name of the log to write to
-log_name = 'chamber'
-# Selects the log to write to
-logger = logging_client.logger(log_name)
+	def log(self, struct):
+		# Writes the log entry
+		self.logger.log_struct(struct)
 
-# The data to log
-struct = {'Humidity': 0, 'Temp': 0}
-
-# Writes the log entry
-logger.log_struct(struct)
-
-#print('Logged: {}'.format(struct))
-
-FILTER = 'logName:{}'.format(log_name)
-for entry in logging_client.list_entries(filter_=FILTER, order_by=DESCENDING):  # API call(s)
-	timestamp = entry.timestamp.isoformat()
-	print('* {}: {}'.format(timestamp, entry.payload))
-
+	def list(self):
+		FILTER = 'logName:{}'.format(self.log_name)
+		return logging_client.list_entries(filter_=FILTER, order_by=DESCENDING)
+		'''
+		for entry in logging_client.list_entries(filter_=FILTER, order_by=DESCENDING):  # API call(s)
+			timestamp = entry.timestamp.isoformat()
+			print('* {}: {}'.format(timestamp, entry.payload))
+		'''
         
