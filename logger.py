@@ -11,7 +11,7 @@ log_name = 'chamber'
 logger = logging_client.logger(log_name)
 
 # The data to log
-struct = {'Humidity': 0, 'Temp', 0}
+struct = {'Humidity': 0, 'Temp': 0}
 
 # Writes the log entry
 logger.log_struct(struct)
