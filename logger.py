@@ -1,5 +1,6 @@
 # Imports the Google Cloud client library
 from google.cloud import logging
+from google.cloud.logging import DESCENDING
 
 
 # Instantiates a client
