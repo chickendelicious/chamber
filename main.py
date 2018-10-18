@@ -12,12 +12,11 @@ humid_id = '0539c140-a3d0-484f-9b24-c003424f94c1'
 fan_id = 'ad9708cf-1784-4d61-885a-7aa3f831b372'
 heat_id = '26f8d44d-77a1-4235-8f75-dcc99ae21f1b'
 
-min_temp = 68
-max_temp = 72
-perf_temp = 70
-min_hum = 78
-max_hum = 82
-perf_hum = 80
+min_temp = 74
+max_temp = 78
+min_hum = 85
+max_hum = 92
+
 
 class RepeatedTimer(object):
     def __init__(self, interval, function, *args, **kwargs):
