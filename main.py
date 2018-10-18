@@ -110,4 +110,4 @@ print ("communicating with vsapi:")
 for dev in vsapi.get_devices():
     print ('{}:{}:{}'.format(dev['deviceName'],dev['cid'],dev['connectionStatus']))
 my_logger = Logger('chamber')
-rt = RepeatedTimer(20, measure) # it auto-starts, no need of rt.start()
+rt = RepeatedTimer(30, measure) # it auto-starts, no need of rt.start()
