@@ -10,7 +10,7 @@ class Logger:
 		# The name of the log to write to
 		self.log_name = name
 		# Selects the log to write to
-		self.logger = logging_client.logger(self.log_name)
+		self.logger = self.logging_client.logger(self.log_name)
 
 	def log(self, struct):
 		# Writes the log entry
