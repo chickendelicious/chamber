@@ -3,7 +3,7 @@ from threading import Timer
 from time import sleep
 from logger import Logger
 from vesync import VesyncApi
-import gspread
+
 
 
 sensor = Adafruit_DHT.DHT22
