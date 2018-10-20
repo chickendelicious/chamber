@@ -80,6 +80,7 @@ def humidifier_on():
 def measure():
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     if humidity is None or temperature is None:
+    	print('bad sensor read')
     	return
     ftemp = (temperature * 1.8) + 32
     my_logger.log(humidity, ftemp)
