@@ -83,6 +83,8 @@ def measure():
     #struct = {'Humidity':humidity, 'Temp':ftemp}
     #my_logger.log(struct)
     my_logger.log(humidity, ftemp)
+    if humidity is None or ftemp is None:
+    	return
     if ftemp > max_temp:
         print('too hot:{}'.format(ftemp))
         heat_off()

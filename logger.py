@@ -22,7 +22,7 @@ class Logger:
 
 	def login_open_sheet(self, oauth_key_file, spreadsheet):
 		try:
-			scope =  ['https://spreadsheets.google.com/feeds']
+			scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 			credentials = ServiceAccountCredentials.from_json_keyfile_name(oauth_key_file, scope)
 			gc = gspread.authorize(credentials)
 			worksheet = gc.open(spreadsheet).sheet1
