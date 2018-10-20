@@ -42,10 +42,10 @@ class Logger:
 		# Append the data in the spreadsheet, including a timestamp
 		try:
 			worksheet.append_row((datetime.datetime.now(), humidity, temp))
-		except:
+		except Exception as ex:
 			# Error appending data, most likely because credentials are stale.
 			# Null out the worksheet so a login is performed at the top of the loop.
-			print('Append error, logging in again')
+			print('Append error: ', ex)
 			self.worksheet = None
 
 	
