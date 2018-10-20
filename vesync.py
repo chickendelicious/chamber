@@ -1,6 +1,4 @@
-import requests
-import hashlib
-import json
+import requests, hashlib, json
 
 requests.packages.urllib3.disable_warnings()
 

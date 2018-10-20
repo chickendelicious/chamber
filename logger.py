@@ -2,22 +2,15 @@
 from google.cloud import logging
 from google.cloud.logging import DESCENDING
 from oauth2client.service_account import ServiceAccountCredentials
-import gspread
-import datetime
+import gspread, datetime
 
 GDOCS_OAUTH_JSON	   = '/home/pi/creds/stackdriver_creds.json'
-
-# Google Docs spreadsheet name.
 GDOCS_SPREADSHEET_NAME = 'chamber_log'
-
 
 class Logger:
 	def __init__(self, name):
-		# Instantiates a client
 		self.logging_client = logging.Client()
-		# The name of the log to write to
 		self.log_name = name
-		# Selects the log to write to
 		self.logger = self.logging_client.logger(self.log_name)
 		self.worksheet = None
 
@@ -36,17 +29,12 @@ class Logger:
 
 
 	def log(self, humidity, temp):
-		# Writes the log entry
-		#self.logger.log_struct(struct)
 		if self.worksheet is None:
 			self.worksheet = self.login_open_sheet(GDOCS_OAUTH_JSON, GDOCS_SPREADSHEET_NAME)
-		# Append the data in the spreadsheet, including a timestamp
 		try:
 			time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S%z')
 			self.worksheet.append_row((time, humidity, temp))
 		except Exception as ex:
-			# Error appending data, most likely because credentials are stale.
-			# Null out the worksheet so a login is performed at the top of the loop.
 			print('Append error: ', ex)
 			self.worksheet = None
 
