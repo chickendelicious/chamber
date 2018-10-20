@@ -1,6 +1,3 @@
-# Imports the Google Cloud client library
-from google.cloud import logging
-from google.cloud.logging import DESCENDING
 from oauth2client.service_account import ServiceAccountCredentials
 import gspread, datetime
 
