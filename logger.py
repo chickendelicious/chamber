@@ -6,9 +6,9 @@ GDOCS_SPREADSHEET_NAME = 'chamber_log'
 
 class Logger:
 	def __init__(self, name):
-		self.logging_client = logging.Client()
+		#self.logging_client = logging.Client()
 		self.log_name = name
-		self.logger = self.logging_client.logger(self.log_name)
+		#self.logger = self.logging_client.logger(self.log_name)
 		self.worksheet = None
 
 	def login_open_sheet(self, oauth_key_file, spreadsheet):
