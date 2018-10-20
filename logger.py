@@ -42,7 +42,7 @@ class Logger:
 			self.worksheet = self.login_open_sheet(GDOCS_OAUTH_JSON, GDOCS_SPREADSHEET_NAME)
 		# Append the data in the spreadsheet, including a timestamp
 		try:
-			time = f'{datetime.datetime.now():%Y-%m-%d %H:%M:%S%z}'
+			time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S%z')
 			self.worksheet.append_row((time, humidity, temp))
 		except Exception as ex:
 			# Error appending data, most likely because credentials are stale.
