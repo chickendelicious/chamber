@@ -70,7 +70,7 @@ def humidifier_off():
     if status(humid_id) == 'on':
         vsapi.turn_off(humid_id)
     return
-    
+
 def humidifier_on():
     if status(humid_id) == 'off':
         print('FOGGING')
@@ -79,10 +79,11 @@ def humidifier_on():
 
 def measure():
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+    if humidity is None or temperature is None:
+    	return
     ftemp = (temperature * 1.8) + 32
     my_logger.log(humidity, ftemp)
-    if humidity is None or ftemp is None:
-    	return
+    
     if ftemp > max_temp:
         print('too hot:{}'.format(ftemp))
         heat_off()
