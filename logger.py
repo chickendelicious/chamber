@@ -46,7 +46,5 @@ class Logger:
 			# Null out the worksheet so a login is performed at the top of the loop.
 			print('Append error, logging in again')
 			self.worksheet = None
-			continue
-
 
 	
