@@ -48,14 +48,5 @@ class Logger:
 			self.worksheet = None
 			continue
 
-'''
-	def list(self):
-		FILTER = 'logName:{}'.format(self.log_name)
-		return logging_client.list_entries(filter_=FILTER, order_by=DESCENDING)
-		''' 
-		'''
-		for entry in logging_client.list_entries(filter_=FILTER, order_by=DESCENDING):  # API call(s)
-			timestamp = entry.timestamp.isoformat()
-			print('* {}: {}'.format(timestamp, entry.payload))
-		'''
+
 	
