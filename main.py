@@ -4,7 +4,7 @@ from time import sleep
 from logger import Logger
 from vesync import VesyncApi
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+
 
 sensor = Adafruit_DHT.DHT22
 pin = 4
