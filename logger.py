@@ -37,7 +37,7 @@ class Logger:
 		# Writes the log entry
 		#self.logger.log_struct(struct)
 		if self.worksheet is None:
-			self.worksheet = login_open_sheet(GDOCS_OAUTH_JSON, GDOCS_SPREADSHEET_NAME)
+			self.worksheet = self.login_open_sheet(GDOCS_OAUTH_JSON, GDOCS_SPREADSHEET_NAME)
 		# Append the data in the spreadsheet, including a timestamp
 		try:
 			worksheet.append_row((datetime.datetime.now(), humidity, temp))
