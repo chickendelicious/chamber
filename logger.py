@@ -20,7 +20,6 @@ class Logger:
 		self.worksheet = None
 
 	def login_open_sheet(self, oauth_key_file, spreadsheet):
-	"""Connect to Google Docs spreadsheet and return the first worksheet."""
 		try:
 			scope =  ['https://spreadsheets.google.com/feeds']
 			credentials = ServiceAccountCredentials.from_json_keyfile_name(oauth_key_file, scope)
