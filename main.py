@@ -3,6 +3,8 @@ from threading import Timer
 from time import sleep
 from logger import Logger
 from vesync import VesyncApi
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 sensor = Adafruit_DHT.DHT22
 pin = 4
@@ -12,10 +14,12 @@ humid_id = '0539c140-a3d0-484f-9b24-c003424f94c1'
 fan_id = 'ad9708cf-1784-4d61-885a-7aa3f831b372'
 heat_id = '26f8d44d-77a1-4235-8f75-dcc99ae21f1b'
 
-min_temp = 74
+min_temp = 76
 max_temp = 78
 min_hum = 85
 max_hum = 92
+
+
 
 
 class RepeatedTimer(object):
@@ -76,8 +80,9 @@ def measure():
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     #print('Humidity:{}, Temp:{}'.format(humidity, temperature))
     ftemp = (temperature * 1.8) + 32
-    struct = {'Humidity':humidity, 'Temp':ftemp}
-    my_logger.log(struct)
+    #struct = {'Humidity':humidity, 'Temp':ftemp}
+    #my_logger.log(struct)
+    my_logger.log(humidity, ftemp)
     if ftemp > max_temp:
         print('too hot:{}'.format(ftemp))
         heat_off()
