@@ -2,7 +2,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import gspread, datetime
 
 GDOCS_OAUTH_JSON	   = '/home/pi/creds/stackdriver_creds.json'
-GDOCS_SPREADSHEET_NAME = 'chamber_log'
+GDOCS_SPREADSHEET_NAME = 'chamber_log2'
 
 class Logger:
 	def __init__(self, name):
