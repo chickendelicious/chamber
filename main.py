@@ -82,7 +82,7 @@ def humidifier_on():
 
 def measure():
 	state = GPIO.input(trans)
-	if state = False:
+	if state == False:
 		GPIO.output(trans, 1)
 		time.sleep(1)
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
