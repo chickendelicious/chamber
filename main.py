@@ -119,7 +119,7 @@ def measure():
 		fan_off()
 		humidifier_on()
 	else:
-		print('perfect moint:'.format(humidity))
+		print('perfect moint:{}'.format(humidity))
 		humidifier_off()
 		fan_off()
 
