@@ -1,4 +1,5 @@
 import Adafruit_DHT, json
+import RPi.GPIO as GPIO
 from threading import Timer
 from time import sleep
 from logger import Logger
@@ -6,6 +7,8 @@ from vesync import VesyncApi
 
 sensor = Adafruit_DHT.DHT22
 pin = 4
+trans = 17
+GPIO.setup(trans, GPIO.OUT, initial=1)
 vesync_creds = json.loads(open('/home/pi/creds/vesync.json','r').read())
 vsapi = VesyncApi(vesync_creds['user'],vesync_creds['password'])
 humid_id = '0539c140-a3d0-484f-9b24-c003424f94c1'
@@ -78,9 +81,15 @@ def humidifier_on():
     return
 
 def measure():
+	state = GPIO.input(trans)
+	if state = False:
+		GPIO.output(trans, 1)
+		time.sleep(1)
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     if humidity is None or temperature is None:
     	print('bad sensor read')
+    	GPIO.output(trans, 0)
+    	fan_off()
     	return
     ftemp = (temperature * 1.8) + 32
     my_logger.log(humidity, ftemp)
