@@ -91,6 +91,7 @@ def measure():
 	humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
 	if humidity is None or temperature is None:
 		print('bad sensor read')
+		my_logger.log_error('bad read', 'h={},t={}'.format(humidity, temperature))
 		GPIO.output(trans, 0)
 		fan_off()
 		return
@@ -128,4 +129,5 @@ print ("communicating with vsapi:")
 for dev in vsapi.get_devices():
 	print ('{}:{}:{}'.format(dev['deviceName'],dev['cid'],dev['connectionStatus']))
 my_logger = Logger('chamber')
+my_logger.log_error('startup', None)
 rt = RepeatedTimer(30, measure) 
