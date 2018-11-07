@@ -33,7 +33,7 @@ class Logger:
 			print('Append error: ', ex)
 			self.worksheet = None
 
-	def log_error(self, error, data=None)
+	def log_error(self, error, data=None):
 		if self.errorsheet is None:
 			self.errorsheet = self.login_open_sheet(GDOCS_OAUTH_JSON, ERROR_SHEET)
 		try:
