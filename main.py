@@ -5,11 +5,12 @@ from time import sleep
 from logger import Logger
 from vesync import VesyncApi
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 sensor = Adafruit_DHT.DHT22
 pin = 4
 trans = 17
-GPIO.setup(trans, GPIO.OUT, initial=1)
+GPIO.setup(trans, GPIO.OUT)
+GPIO.output(trans, 1)
 vesync_creds = json.loads(open('/home/pi/creds/vesync.json','r').read())
 vsapi = VesyncApi(vesync_creds['user'],vesync_creds['password'])
 humid_id = '0539c140-a3d0-484f-9b24-c003424f94c1'
