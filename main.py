@@ -5,6 +5,7 @@ from time import sleep
 from logger import Logger
 from vesync import VesyncApi
 
+GPIO.setmode(GPIO.BOARD)
 sensor = Adafruit_DHT.DHT22
 pin = 4
 trans = 17
