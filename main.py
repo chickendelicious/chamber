@@ -1,7 +1,6 @@
-import Adafruit_DHT, json
+import Adafruit_DHT, json, time
 import RPi.GPIO as GPIO
 from threading import Timer
-from time import sleep
 from logger import Logger
 from vesync import VesyncApi
 
